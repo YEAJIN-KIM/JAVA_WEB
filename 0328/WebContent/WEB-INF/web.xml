@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		                    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+		version="3.0">
+		
+		<jsp-config>
+			<jsp-property-group>
+			<url-pattern>/view/*</url-pattern>
+			<include-prelude>/common/variable.jspf</include-prelude>
+			<include-coda>/common/footer.jspf</include-coda>
+			</jsp-property-group>
+		</jsp-config>
+		
+		<context-param>
+			<description>디버깅레밸</description>
+			<param-name>debugLebel</param-name>
+			<param-value>warning</param-value>
+		</context-param>
+		
+		<context-param>
+			<description>관리자</description>
+			<param-name>manager</param-name>
+			<param-value>한승규</param-value>
+		</context-param>
+		
+		<context-param>
+			<description>동시사용자수</description>
+			<param-name>numberOfUsers</param-name>
+			<param-value>100</param-value>
+		</context-param>
+		
+		
+		
+	<servlet>
+		<servlet-name>JDBCDriverLoader</servlet-name>
+		<servlet-class>mvjsp.jdbc.loader.Loader</servlet-class>
+		<init-param>
+			<param-name>jdbcdriver</param-name>
+			<param-value>com.mysql.jdbc.Driver</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>DBCPInit</servlet-name>
+		<servlet-class>mvjsp.jdbc.loader.DBCPInit</servlet-class>
+		<init-param>
+			<param-name>jdbcdriver</param-name>
+			<param-value>com.mysql.jdbc.Driver</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+</web-app>
